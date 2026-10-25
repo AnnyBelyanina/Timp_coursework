@@ -14,13 +14,14 @@ Logger::Logger(const std::string& fname) : filename(fname) {
     
     logInfo("Журнал работы программы инициализирован");
 }
+
 Logger::~Logger(){
     if (logFile.is_open()){
         logFile.close();
     }
 }
 
-void Logger::writeLog(const std::string level,const std::string& message) {
+void Logger::writeLog(const std::string level, const std::string& message) {
     auto now = std::chrono::system_clock::now();
     auto time_t_now = std::chrono::system_clock::to_time_t(now);
     
@@ -32,16 +33,18 @@ void Logger::writeLog(const std::string level,const std::string& message) {
     
     if (logFile.is_open()){
         logFile << logEntry;
+        logFile.flush(); 
     }
     
     if (level == "ERROR"){
         std::cerr << logEntry;
     }
-}   
-    void Logger::logInfo(const std::string& message){
-        writeLog("INFO", message);
-    }
-    void Logger::logError(const std::string& message) {
-        writeLog("ERROR", message);
-    }
+}
 
+void Logger::logInfo(const std::string& message){
+    writeLog("INFO", message);
+}
+
+void Logger::logError(const std::string& message) {
+    writeLog("ERROR", message);
+}
