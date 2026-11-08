@@ -16,6 +16,7 @@ bool UserInterface::parseArgs(int argc, char* argv[]){
     
     desc.add_options()
         ("help,h", "Вывод справки")
+        ("run", "Запуск сервера (обязательный параметр)")
         ("db-file,d", po::value<std::string>(&params.databaseFile)->default_value("./vcalc.conf"), 
          "Имя файла с базой клиентов") 
         ("log-file,l", po::value<std::string>(&params.logFile)->default_value("./vcalc.log"), 
@@ -28,7 +29,7 @@ bool UserInterface::parseArgs(int argc, char* argv[]){
     try{
         po::store(po::parse_command_line(argc, argv, desc), vm);
         
-        if (vm.count("help") || argc == 1){
+        if (vm.count("help") || !vm.count("run")){
             showHelp();
             return false;
         }
@@ -47,7 +48,7 @@ bool UserInterface::parseArgs(int argc, char* argv[]){
 void UserInterface::showHelp(){
     std::cout << "Сервер vcalc - серверная программа для клиент-серверной системы обработки данных\n"
               << "\n"
-              << "Использование: vcalc_server [options]\n"
+              << "Использование: vcalc_server --run [options]\n"
               << "\n"
               << "Параметры:\n"
               << "  -h [ --help ]         Вывод справки\n"

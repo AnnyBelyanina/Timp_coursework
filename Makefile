@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -O2
-LDFLAGS = -lboost_program_options -lcryptopp -lpthread
+LDFLAGS = -lboost_program_options -lcryptopp 
 
 SOURCES = main.cpp \
           errors.cpp \
