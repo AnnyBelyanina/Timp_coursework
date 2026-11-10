@@ -32,6 +32,7 @@ SUITE(UserDatabaseTest) {
     TEST_FIXTURE(DBFixture, LoadCorrectFile) { // Тест 1.1
         UserDatabase db(TEST_DB_FILE);
         bool result = db.load();
+        std::cout << "=== Модуль UserDatabase ===" << std::endl;
         std::cout << "Тест 1.1: load() вернул " << (result ? "true" : "false") << std::endl;
         CHECK(result);
     }

@@ -19,6 +19,7 @@ SUITE(LoggerTest) {
         std::string line;
         std::getline(f, line);
         bool hasInfo = line.find("[INFO]") != std::string::npos;
+        std::cout << "=== Модуль Logger ===" << std::endl;
         std::cout << "Тест 1.1: файл открыт=" << (isOpen ? "true" : "false") 
                   << ", содержит [INFO]=" << (hasInfo ? "true" : "false") << std::endl;
         CHECK(isOpen);

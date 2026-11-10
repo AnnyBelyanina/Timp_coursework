@@ -9,6 +9,7 @@ SUITE(DataProcessorTest) {
         DataProcessor dp;
         std::vector<double> vec = {1.0, 2.0, 3.0};
         double result = dp.calculateMean(vec);
+        std::cout << "=== Модуль DataProcessor ===" << std::endl;
         std::cout << "Тест 1.1: calculateMean() вернул " << result << std::endl;
         CHECK(std::abs(result - 2.0) < 0.0001);
     }

@@ -10,6 +10,7 @@ SUITE(HelpTest) {
         char* argv[] = {arg1, nullptr};  
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
+        std::cout << "=== Модуль UserInterface ===" << std::endl;
         std::cout << "Тест 1.1: parseArgs вернул " << (result ? "true" : "false") << std::endl;
         REQUIRE CHECK(!result);
     }
