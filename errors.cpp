@@ -2,8 +2,8 @@
 
 ProgramError::ProgramError(const std::string& msg) : message(msg) {}
 
-std:: string ProgramError::what() const {
-    return message;
+const char* ProgramError::what() const noexcept {
+    return message.c_str();
 }
 
 IOError::IOError(const std::string& msg)

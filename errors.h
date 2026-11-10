@@ -1,31 +1,35 @@
-#pragma once
+#ifndef ERRORS_H
+#define ERRORS_H
+
 #include <exception>
 #include <string>
 
-class ProgramError{
+class ProgramError : public std::exception {
 protected:
     std::string message;
 public:
     ProgramError(const std::string& msg);
-    std::string what() const;
+    const char* what() const noexcept override;
 };
 
-class IOError: public ProgramError{
+class IOError : public ProgramError {
 public:
-    explicit IOError(const std::string & msg);
+    IOError(const std::string& msg);
 };
 
-class InterfaceError: public ProgramError{
+class InterfaceError : public ProgramError {
 public:
-    explicit InterfaceError(const std::string & msg);
+    InterfaceError(const std::string& msg);
 };
 
-class NetworkError: public ProgramError{
+class NetworkError : public ProgramError {
 public:
-    explicit NetworkError(const std::string & msg);
+    NetworkError(const std::string& msg);
 };
 
-class AuthError: public ProgramError{
+class AuthError : public ProgramError {
 public:
-    explicit AuthError(const std::string & msg);
+    AuthError(const std::string& msg);
 };
+
+#endif // ERRORS_H
