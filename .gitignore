@@ -14,6 +14,9 @@ vcalc.conf
 test_db.conf
 test_run.log
 test_results.txt
+test.log
+load.log
+functional_test.log
 
 # Сгенерированная документация Doxygen
 docs/
