@@ -1,3 +1,12 @@
+/** @file
+ * @author Белянина А.А.
+ * @version 1.0
+ * @date 22.11.2026
+ * @copyright ИБСТ ПГУ
+ * @warning Это учебный пример
+ * @brief Реализация главного модуля сервера
+ */
+ 
 #include "server.h"
 #include "errors.h"
 #include <sys/socket.h>

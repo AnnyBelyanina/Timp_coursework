@@ -15,4 +15,5 @@ test_db.conf
 test_run.log
 test_results.txt
 
-
+# Сгенерированная документация Doxygen
+docs/
