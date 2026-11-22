@@ -4,40 +4,40 @@
 #include "errors.h" 
 
 SUITE(HelpTest) {
-    TEST(NoParams) { // Тест 1.1
+    TEST(NoParams) { // Тест 1.1.1
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char* argv[] = {arg1, nullptr};  
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
         std::cout << "=== Модуль UserInterface ===" << std::endl;
-        std::cout << "Тест 1.1: parseArgs вернул " << (result ? "true" : "false") << std::endl;
+        std::cout << "Тест 1.1.1: parseArgs вернул " << (result ? "true" : "false") << std::endl;
         REQUIRE CHECK(!result);
     }
 
-    TEST(ShortHelp) { // Тест 1.2
+    TEST(ShortHelp) { // Тест 1.1.2
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "-h";
         char* argv[] = {arg1, arg2, nullptr};
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
-        std::cout << "Тест 1.2: parseArgs вернул " << (result ? "true" : "false") << std::endl;
+        std::cout << "Тест 1.1.2: parseArgs вернул " << (result ? "true" : "false") << std::endl;
         REQUIRE CHECK(!result);
     }
 
-    TEST(LongHelp) { // Тест 1.3
+    TEST(LongHelp) { // Тест 1.1.3
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "--help";
         char* argv[] = {arg1, arg2, nullptr};
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
-        std::cout << "Тест 1.3: parseArgs вернул " << (result ? "true" : "false") << std::endl;
+        std::cout << "Тест 1.1.3: parseArgs вернул " << (result ? "true" : "false") << std::endl;
         REQUIRE CHECK(!result);
     }
 
-    TEST(HelpAndPort) { // Тест 1.4
+    TEST(HelpAndPort) { // Тест 1.1.4
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "-h";
@@ -46,11 +46,11 @@ SUITE(HelpTest) {
         char* argv[] = {arg1, arg2, arg3, arg4, nullptr};
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
-        std::cout << "Тест 1.4: parseArgs вернул " << (result ? "true" : "false") << std::endl;
+        std::cout << "Тест 1.1.4: parseArgs вернул " << (result ? "true" : "false") << std::endl;
         REQUIRE CHECK(!result);
     }
 
-    TEST(PortAndHelp) { // Тест 1.5
+    TEST(PortAndHelp) { // Тест 1.1.5
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "-p";
@@ -59,13 +59,13 @@ SUITE(HelpTest) {
         char* argv[] = {arg1, arg2, arg3, arg4, nullptr};
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
-        std::cout << "Тест 1.5: parseArgs вернул " << (result ? "true" : "false") << std::endl;
+        std::cout << "Тест 1.1.5: parseArgs вернул " << (result ? "true" : "false") << std::endl;
         REQUIRE CHECK(!result);
     }
 }
 
 SUITE(WorkParamsTest) {
-    TEST(RunOnly) { // Тест 2.1
+    TEST(RunOnly) { // Тест 1.2.1
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "--run";
@@ -73,13 +73,13 @@ SUITE(WorkParamsTest) {
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
         int port = ui.getParams().port;
-        std::cout << "Тест 2.1: parseArgs=" << (result ? "true" : "false") 
+        std::cout << "Тест 1.2.1: parseArgs=" << (result ? "true" : "false") 
                   << ", port=" << port << std::endl;
         REQUIRE CHECK(result);
         CHECK_EQUAL(33333, port);
     }
 
-    TEST(RunAndPort) { // Тест 2.2
+    TEST(RunAndPort) { // Тест 1.2.2
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "--run";
@@ -89,13 +89,13 @@ SUITE(WorkParamsTest) {
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
         int port = ui.getParams().port;
-        std::cout << "Тест 2.2: parseArgs=" << (result ? "true" : "false") 
+        std::cout << "Тест 1.2.2: parseArgs=" << (result ? "true" : "false") 
                   << ", port=" << port << std::endl;
         REQUIRE CHECK(result);
         CHECK_EQUAL(44444, port);
     }
 
-    TEST(AllParams) { // Тест 2.3
+    TEST(AllParams) { // Тест 1.2.3
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "--run";
@@ -109,13 +109,13 @@ SUITE(WorkParamsTest) {
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
         int port = ui.getParams().port;
-        std::cout << "Тест 2.3: parseArgs=" << (result ? "true" : "false") 
+        std::cout << "Тест 1.2.3: parseArgs=" << (result ? "true" : "false") 
                   << ", port=" << port << std::endl;
         REQUIRE CHECK(result);
         CHECK_EQUAL(55555, port);
     }
 
-    TEST(PortAndDb) { // Тест 2.4
+    TEST(PortAndDb) { // Тест 1.2.4
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "--run";
@@ -127,7 +127,7 @@ SUITE(WorkParamsTest) {
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         bool result = ui.parseArgs(argc, argv);
         int port = ui.getParams().port;
-        std::cout << "Тест 2.4: parseArgs=" << (result ? "true" : "false") 
+        std::cout << "Тест 1.2.4: parseArgs=" << (result ? "true" : "false") 
                   << ", port=" << port << std::endl;
         REQUIRE CHECK(result);
         CHECK_EQUAL(44444, port);
@@ -135,7 +135,7 @@ SUITE(WorkParamsTest) {
 }
 
 SUITE(ExceptionTest) {
-    TEST(UnknownParam) { // Тест 3.1
+    TEST(UnknownParam) { // Тест 1.3.1
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "--run";
@@ -144,14 +144,14 @@ SUITE(ExceptionTest) {
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         try {
             ui.parseArgs(argc, argv);
-            std::cout << "Тест 3.1: ОШИБКА - исключение не брошено!" << std::endl;
+            std::cout << "Тест 1.3.1: ОШИБКА - исключение не брошено!" << std::endl;
         } catch (const InterfaceError& e) {
-            std::cout << "Тест 3.1: Исключение InterfaceError: " << e.what() << std::endl;
+            std::cout << "Тест 1.3.1: Исключение InterfaceError: " << e.what() << std::endl;
         }
         CHECK_THROW(ui.parseArgs(argc, argv), InterfaceError);
     }
 
-    TEST(MissingPortValue) { // Тест 3.2
+    TEST(MissingPortValue) { // Тест 1.3.2
         UserInterface ui;
         char arg1[] = "vcalc_server";
         char arg2[] = "--run";
@@ -160,9 +160,9 @@ SUITE(ExceptionTest) {
         int argc = sizeof(argv) / sizeof(nullptr) - 1;
         try {
             ui.parseArgs(argc, argv);
-            std::cout << "Тест 3.2: ОШИБКА - исключение не брошено!" << std::endl;
+            std::cout << "Тест 1.3.2: ОШИБКА - исключение не брошено!" << std::endl;
         } catch (const InterfaceError& e) {
-            std::cout << "Тест 3.2: Исключение InterfaceError: " << e.what() << std::endl;
+            std::cout << "Тест 1.3.2: Исключение InterfaceError: " << e.what() << std::endl;
         }
         CHECK_THROW(ui.parseArgs(argc, argv), InterfaceError);
     }
