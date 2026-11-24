@@ -1,5 +1,3 @@
-#!/bin/bash
-
 LOG='test.log'
 SERVER='./vcalc_server'
 CLIENT='./client_double'
@@ -48,7 +46,7 @@ cat happy.log >> $LOG
 kill $PID 2>/dev/null
 rm -f happy.log
 
-# Тест 6: Ошибка соединения - сервер не запущен (п.4)
+# Тест 6: Ошибка соединения - сервер не запущен
 echo '' >> $LOG
 echo 'Тест 6: Ошибка соединения (сервер не запущен)' >> $LOG
 $CLIENT -H SHA256 -S client 2>> $LOG
